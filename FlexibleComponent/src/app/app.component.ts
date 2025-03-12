@@ -3,7 +3,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from '../dummy-user';
 import { TasksComponent } from "./tasks/tasks.component";
-import { RouterTestingHarness } from '@angular/router/testing';
+import { User } from './user/user.model';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +13,12 @@ import { RouterTestingHarness } from '@angular/router/testing';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  users = DUMMY_USERS
+  users : User[] = DUMMY_USERS
 
-  selectedUserId = "u1"
+  selectedUserId ?: string
 
-  get selectUser() {
-    return this.users.find((user) => user.id = this.selectedUserId)
+  get selectedUser() {
+    return this.users.find((user) => user.id == this.selectedUserId)
   }
 
   onSelectUser(id: string) {
